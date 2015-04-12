@@ -336,6 +336,7 @@ namespace xSaliceReligionAIO.Champions
 
         public void Cast_WE()
         {
+			var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
             if (E.IsReady())
             {
                 var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range;
