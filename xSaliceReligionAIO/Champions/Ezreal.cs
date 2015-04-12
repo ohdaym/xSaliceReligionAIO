@@ -120,7 +120,7 @@ namespace xSaliceReligionAIO.Champions
             var miscMenu = new Menu("Misc", "Misc");
             {
                 miscMenu.AddItem(
-                    new MenuItem("Misc_Use_WE", "Cast WE to mouse",true).SetValue(new KeyBind("T".ToCharArray()[0],
+                    new MenuItem("Misc_Use_WE", "Cast E to mouse",true).SetValue(new KeyBind("T".ToCharArray()[0],
                         KeyBindType.Press)));
                 //add to menu
                 menu.AddSubMenu(miscMenu);
