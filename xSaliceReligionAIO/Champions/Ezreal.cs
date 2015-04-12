@@ -417,7 +417,8 @@ namespace xSaliceReligionAIO.Champions
 			{
 				foreach (var unit in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsValidTarget(20000) && !x.IsDead && x.IsEnemy).OrderBy(x => x.Health))
 					{
-					Render.Circle.DrawCircle(unit.Position, 1050, true ? Color.Red : Color.Red);
+					Render.Circle.DrawCircle(unit.Position, 1000, true ? Color.Red : Color.Red);
+					Render.Circle.DrawCircle(unit.Position, 1200, true ? Color.Green : Color.Green);
 					}
 			}
 
