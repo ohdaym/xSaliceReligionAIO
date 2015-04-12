@@ -123,7 +123,7 @@ namespace xSaliceReligionAIO.Champions
             var miscMenu = new Menu("Misc", "Misc");
             {
                 miscMenu.AddItem(
-                    new MenuItem("Misc_Use_WE", "Cast E to mouse",true).SetValue(new KeyBind("T".ToCharArray()[0],
+                    new MenuItem("Misc_Use_WE", "Smart E",true).SetValue(new KeyBind("T".ToCharArray()[0],
                         KeyBindType.Press)));
                 //add to menu
                 menu.AddSubMenu(miscMenu);
@@ -342,10 +342,15 @@ namespace xSaliceReligionAIO.Champions
 
 		public void Cast_WE()
 		{
-			var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
-			if (E.IsReady() && Player.Distance(target.Position) < 550)
+			var target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Physical);
+			if (E.IsReady() && Player.Distance(target.Position) <= 500)
 			{
 				var vec = Player.ServerPosition + Vector3.Normalize(target.ServerPosition - Player.ServerPosition) * E.Range *-1;
+				E.Cast(vec);
+			}
+			if (E.IsReady() && Player.Distance(target.Position) >= 1400)
+			{
+				var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range;
 				E.Cast(vec);
 			}
 		}
