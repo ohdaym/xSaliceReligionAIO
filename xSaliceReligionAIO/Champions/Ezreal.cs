@@ -345,12 +345,7 @@ namespace xSaliceReligionAIO.Champions
 			var target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Physical);
 			if (E.IsReady() && Player.Distance(target.Position) <= 500)
 			{
-				var vec = Player.ServerPosition + Vector3.Normalize(target.ServerPosition - Player.ServerPosition) * E.Range *-1;
-				E.Cast(vec);
-			}
-			if (E.IsReady() && Player.Distance(target.Position) >= 1400)
-			{
-				var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range;
+				var vec = Player.ServerPosition + Vector3.Normalize(target.ServerPosition - Player.ServerPosition) * E.Range * -1;
 				E.Cast(vec);
 			}
 		}
