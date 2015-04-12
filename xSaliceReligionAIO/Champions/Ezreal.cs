@@ -339,8 +339,6 @@ namespace xSaliceReligionAIO.Champions
             if (W.IsReady() && E.IsReady())
             {
                 var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range;
-
-                W.Cast(vec);
                 E.Cast(vec);
             }
         }
