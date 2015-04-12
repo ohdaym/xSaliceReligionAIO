@@ -338,10 +338,20 @@ namespace xSaliceReligionAIO.Champions
         {
             if (E.IsReady())
             {
-                var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range * -1;
+                var vec = Player.ServerPosition + Vector3.Normalize(Game.CursorPos - Player.ServerPosition) * E.Range;
                 E.Cast(vec);
             }
         }
+
+		public void EAway()
+		{
+			if (E.IsReady() && Player.Distance(target.Position) < 550)
+			{
+				var vec = Player.ServerPosition + Vector3.Normalize(target.ServerPosition - Player.ServerPosition) * E.Range *-1;
+				E.Cast(vec);
+			}
+		}
+
 
         public void AutoQ()
         {
