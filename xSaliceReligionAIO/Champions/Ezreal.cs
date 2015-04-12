@@ -21,6 +21,9 @@ namespace xSaliceReligionAIO.Champions
             Q = new Spell(SpellSlot.Q, 1200);
 			Q.SetSkillshot(0.5f, 80f, 1200f, true, SkillshotType.SkillshotLine);
 
+			Q2 = new Spell (SpellSlot.Q, 1200);
+			Q2.SetSkillshot (0.5f, 80f, 1200f, false, SkillshotType.SkillshotLine);
+
             W = new Spell(SpellSlot.W, 1050);
 			W.SetSkillshot(0.5f, 80f, 1200f, false, SkillshotType.SkillshotLine);
 
@@ -230,13 +233,13 @@ namespace xSaliceReligionAIO.Champions
             if (!HasMana("LaneClear"))
                 return;
 
-            List<Obj_AI_Base> allMinionsQ = MinionManager.GetMinions(ObjectManager.Player.ServerPosition, Q.Range,
+            List<Obj_AI_Base> allMinionsQ = MinionManager.GetMinions(ObjectManager.Player.ServerPosition, Q2.Range,
                 MinionTypes.All, MinionTeam.NotAlly);
 
             var useQ = menu.Item("UseQFarm", true).GetValue<bool>();
 
             if (useQ && allMinionsQ.Count > 0)
-                Q.Cast(allMinionsQ[0], packets());
+                Q2.Cast(allMinionsQ[0], packets());
         }
 
         private void Cast_E()
