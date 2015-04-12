@@ -134,6 +134,7 @@ namespace xSaliceReligionAIO.Champions
                 drawMenu.AddItem(new MenuItem("Draw_E", "Draw E",true).SetValue(true));
                 drawMenu.AddItem(new MenuItem("Draw_R", "Draw R",true).SetValue(true));
                 drawMenu.AddItem(new MenuItem("Draw_R_Killable", "Draw R Mark on Killable",true).SetValue(true));
+				drawMenu.AddItem(new MenuItem("DrawDanger", "Draw danger zone circle around enemies", true).SetValue(true));
 
                 MenuItem drawComboDamageMenu = new MenuItem("Draw_ComboDamage", "Draw Combo Damage",true).SetValue(true);
                 MenuItem drawFill = new MenuItem("Draw_Fill", "Draw Combo Damage Fill",true).SetValue(new Circle(true, Color.FromArgb(90, 255, 169, 4)));
@@ -419,9 +420,6 @@ namespace xSaliceReligionAIO.Champions
 					Render.Circle.DrawCircle(unit.Position, 1050, true ? Color.Red : Color.Red);
 					}
 			}
-
-			if (menu.Item("DrawDanger", true).GetValue<bool>())
-					Render.Circle.DrawCircle(Enemy.Position, R.Range, R.IsReady() ? Color.Green : Color.Red);
 
             if (menu.Item("Draw_Q", true).GetValue<bool>())
                 if (Q.Level > 0)
