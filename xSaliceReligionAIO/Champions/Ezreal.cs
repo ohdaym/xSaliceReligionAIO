@@ -74,7 +74,7 @@ namespace xSaliceReligionAIO.Champions
 
                 var rMenu = new Menu("RMenu", "RMenu");
                 {
-                    rMenu.AddItem(new MenuItem("R_Min_Range", "R Min Range Sliders",true).SetValue(new Slider(300, 0, 1000)));
+                    rMenu.AddItem(new MenuItem("R_Min_Range", "R Min Range Sliders",true).SetValue(new Slider(300, 0, 2000)));
                     rMenu.AddItem(new MenuItem("R_Max_Range", "R Max Range Sliders",true).SetValue(new Slider(2000, 0, 4000)));
                     rMenu.AddItem(new MenuItem("R_Mec", "R if hit >=",true).SetValue(new Slider(3, 1, 5)));
                     rMenu.AddItem(new MenuItem("R_Overkill_Check", "Overkill Check",true).SetValue(true));
@@ -277,7 +277,7 @@ namespace xSaliceReligionAIO.Champions
                 {
                     if (!menu.Item("Dont_R" + target.BaseSkinName, true).GetValue<bool>())
                     {
-                        if (Get_R_Dmg(target) > target.Health && Player.Distance(target.Position) > minRange)
+                        if (Player.Distance(target.Position) > minRange)
                         {
                             R.Cast(target, packets());
                             return;
@@ -289,7 +289,7 @@ namespace xSaliceReligionAIO.Champions
             foreach (var unit in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsValidTarget(R.Range)).OrderByDescending(GetComboDamage))
             {
                 var pred = R.GetPrediction(unit, true);
-                if (Player.Distance(unit.Position) > minRange && pred.AoeTargetsHitCount >= minHit && pred.Hitchance >= HitChance.Medium)
+                if (Player.Distance(unit.Position) > minRange && pred.AoeTargetsHitCount >= minHit && pred.Hitchance >= HitChance.Low)
                 {
                     R.Cast(unit, packets());
                     return;
