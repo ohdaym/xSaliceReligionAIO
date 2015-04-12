@@ -334,7 +334,7 @@ namespace xSaliceReligionAIO.Champions
             return (float)dmg;
         }
 
-        public void Cast_WE()
+        public void Cast_WEs()
         {
             if (E.IsReady())
             {
@@ -343,7 +343,7 @@ namespace xSaliceReligionAIO.Champions
             }
         }
 
-		public void EAway()
+		public void Cast_WE()
 		{
 			var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
 			if (E.IsReady() && Player.Distance(target.Position) < 550)
